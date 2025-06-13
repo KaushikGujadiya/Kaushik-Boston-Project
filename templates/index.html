@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boston Housing Price Prediction</title>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    form {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        margin-top: 20px;
+        padding: 40px 50px;
+        max-width: 700px;
+        width: 95%;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 30px;
+        color: #ffffff;
+        letter-spacing: 1px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin:10px 10px 10px 10px;
+    }
+
+    .form-group {
+        position: relative;
+    }
+
+    label {
+        position: absolute;
+        top: 12px;
+        left: 14px;
+        color: #cce4f7;
+        font-size: 14px;
+        pointer-events: none;
+        transition: 0.3s;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 14px 14px 14px 14px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+        font-size: 16px;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    input[type="text"]:focus {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-color: #64b5f6;
+    }
+
+    input[type="text"]:focus + label,
+    input[type="text"]:not(:placeholder-shown) + label {
+        top: -10px;
+        left: 10px;
+        font-size: 12px;
+        color: #90caf9;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0 5px;
+        border-radius: 4px;
+    }
+
+    input[type="submit"] {
+        margin-top: 30px;
+        padding: 14px;
+        width: 100%;
+        border: none;
+        border-radius: 30px;
+        background: #64b5f6;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background: #2196f3;
+    }
+
+    h3 {
+        text-align: center;
+        margin-top: 20px;
+        color: #c8e6c9;
+    }
+</style>
+
+</head>
+<body>
+
+    <form action="/predict" method="post">
+    <h2>Boston Housing Price Prediction</h2>
+    <div class="form-grid">
+        <div class="form-group">
+            <input type="text" name="CRIM" placeholder=" " required>
+            <label>CRIM</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="ZN" placeholder=" " required>
+            <label>ZN</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="INDUS" placeholder=" " required>
+            <label>INDUS</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="CHAS" placeholder=" " required>
+            <label>CHAS</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="NOX" placeholder=" " required>
+            <label>NOX</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="RM" placeholder=" " required>
+            <label>RM</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="AGE" placeholder=" " required>
+            <label>AGE</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="DIS" placeholder=" " required>
+            <label>DIS</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="RAD" placeholder=" " required>
+            <label>RAD</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="TAX" placeholder=" " required>
+            <label>TAX</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="PTRATIO" placeholder=" " required>
+            <label>PTRATIO</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="B" placeholder=" " required>
+            <label>B</label>
+        </div>
+        <div class="form-group">
+            <input type="text" name="LSTAT" placeholder=" " required>
+            <label>LSTAT</label>
+        </div>
+    </div>
+    <input type="submit" value="Predict">
+</form>
+
+{% if prediction_text %}
+    <h3>{{ prediction_text }}</h3>
+{% endif %}a
+
+</body>
+</html>
