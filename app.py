@@ -21,7 +21,6 @@ def predict():
         float(request.form['NOX']),
         float(request.form['RM']),
         float(request.form['AGE']),
-        4
         float(request.form['DIS']),
         float(request.form['RAD']),
         float(request.form['TAX']),
